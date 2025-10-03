@@ -27,7 +27,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/auth/**", "/").permitAll()
+                    .requestMatchers("/auth/**", "/health").permitAll()
                         .requestMatchers("/habits/**").authenticated()
                         .anyRequest().authenticated()
                 )
@@ -41,3 +41,4 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 }
+
